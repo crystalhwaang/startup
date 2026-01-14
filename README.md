@@ -23,13 +23,21 @@ Have you ever had a random assortment of ingredients in your pantry and fridge t
 
 ![Design image of Food Fetch Website](foodFetchDesign.png)
 
-Here is a sequence diagram that shows how people would interact with the backend to upload their own photos and ingredients.
+Here is a sequence diagram that shows how people would interact with the website and the server to upload their own photos and ingredients.
 
 ```mermaid
 sequenceDiagram
-    actor You
+    actor User
     actor Website
-    You->>Website: Replace this with your design
+    actor Server
+    User->>Server: Enter Ingredients
+    Website->>Server: Request Recipe
+    Server-->>Website: Recipe Results
+    Server-->>User: Display Recipes
+    User->>Server: Upload Photos
+    Website->>Server: Store Photo
+    Server-->>Website: Successful Upload
+    Server-->>User: Photo Completion
 ```
 
 ### Key features
