@@ -21,7 +21,7 @@ Have you ever had a random assortment of ingredients in your pantry and fridge t
 
 ### Design
 
-![Design image of Food Fetch Website](<img width="647" height="647" alt="Food Fetch Design" src="https://github.com/user-attachments/assets/d1d762a3-88ea-40a7-a2e4-ca4e6ca701aa" />)
+![Design image of Food Fetch Website](foodFetchDesign.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
