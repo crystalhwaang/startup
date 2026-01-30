@@ -4,7 +4,6 @@
 
 Food Fetch is an application that provides recipes to all of its users. Enter ingredients and receive ideas for recipes that can be made with those ingredients, or simply look up a desired dish and options will be provided. Upload photos or recipes of your own dishes that have been made!
 
-
 ## 🚀 Specification Deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
@@ -57,14 +56,14 @@ I am going to use the required technologies in the following ways:
 - **CSS** - Styling that accommodates different-sized screens. Site is aesthetically pleasing (format, colorway, spacing).
 - **React** - Displays other people's photos, uploading photos, and use of React for routing and components.
 - **Service** - Backend Service for retrieving photos, login.
-- **DB/Login** - Store photos, store users. Register and login users. Can't post unless authenticated. 
+- **DB/Login** - Store photos, store users. Register and login users. Can't post unless authenticated.
 - **WebSocket** - As each user posts photos, their photos are broadcast to all other users.
 
 ## 🚀 AWS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://foodfetch.click).
 
 ## 🚀 HTML deliverable
 
