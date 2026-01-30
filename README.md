@@ -70,14 +70,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **HTML pages** - I created three different HTML pages - index.html, recipe.html, and photo.html. Each has a basic structure of what will be displayed on the screen.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
+- [x] **Proper HTML element usage** - Used basic HTML elements to demonstrate a skeleton of what the site may look like, before CSS and Java are implemented.
 - [x] **Links** - Linked my GitHub repository, as well as links that allow for navigation between web pages. Each of the three HTML pages can be called from any of the other two HTML pages at any given time.
 - [x] **Text** - Added text into all three HTML pages. Some text is used as a placeholder, while other text is used as an example of what the site may look at when in use.
 - [x] **3rd party API placeholder** - Placed the 3rd party APT placeholder on my recipes page. I listed a few ingredients that could be entered and put the placeholder directly underneath for when it is called.
-- [ ] **Images** - I did not complete this part of the deliverable.
+- [x] **Images** - I placed an image placeholder on the photo.html page, since that is where most images will be displayed. There is also an image placeholder on the recipe.html page, since photos will appear, along with hyperlinks, of potential recipes.
 - [x] **Login placeholder** - The login placeholder is located on index.html. This is the page that each user will be directed to when they first enter Food Fetch. They will need to login here, in order to access the rest of the site.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **DB data placeholder** - The DB Data Placeholder is located on the photo.html page, since it will store all of the photos. Users will also be stored from the index.html page.
+- [x] **WebSocket placeholder** - This is located on the photo.html page. As users post on here, their photos will be broadcast to all other users on the Food Fetch platform.
 
 ## 🚀 CSS deliverable
 
