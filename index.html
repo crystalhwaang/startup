@@ -22,25 +22,62 @@
           <li><a href="photo.html">Photo Gallery</a></li>
         </menu>
       </nav>
-
-      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-      <hr />
     </header>
 
     <main>
       <h1>Welcome to Food Fetch</h1>
-      <!--<form method="get" action="play.html">
-        <div>
-          <span>@</span>
-          <input type="text" placeholder="your@email.com" />
+      <div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+        <div class="card shadow">
+          <div class="card-body p-4">
+
+            <h2 class="text-center mb-4">Login</h2>
+
+            <form>
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter email"
+                >
+              </div>
+
+              <!-- Password -->
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                >
+              </div>
+
+              <!-- Login Button -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">
+                  Log In
+                </button>
+              </div>
+            </form>
+
+            <!-- Optional text -->
+            <p class="text-center mt-3 mb-0">
+              Don’t have an account?
+              <a href="#">Sign up</a>
+            </p>
+
+          </div>
         </div>
-        <div>
-          <span>🔒</span>
-          <input type="password" placeholder="password" />
-        </div>
-        <button type="submit">Login</button>
-        <button type="submit">Create</button>
-      </form>-->
+
+      </div>
+    </div>
+  </div>
       <div>
         <span>
             <h1><a href="index.html">Login</a></h1>
