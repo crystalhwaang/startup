@@ -14,9 +14,9 @@ export default function App() {
           <h1>Food Fetch</h1>
           <nav>
               <menu>
-              <li><a href="index.html" className='main-color'>Home</a></li>
-              <li><a href="recipe.html" className='main-color'>Recipes</a></li>
-              <li><a href="photo.html" className='main-color'>Photo Gallery</a></li>
+              <li><NavLink to="index.html" className='main-color'>Home</NavLink></li>
+              <li><NavLink to="recipe.html" className='main-color'>Recipes</NavLink></li>
+              <li><NavLink to="photo.html" className='main-color'>Photo Gallery</NavLink></li>
               </menu>
           </nav>
           </header>
