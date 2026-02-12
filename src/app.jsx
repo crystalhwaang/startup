@@ -14,14 +14,19 @@ export default function App() {
           <h1>Food Fetch</h1>
           <nav>
               <menu>
-              <li><NavLink to="index.html" className='main-color'>Home</NavLink></li>
-              <li><NavLink to="recipe.html" className='main-color'>Recipes</NavLink></li>
-              <li><NavLink to="photo.html" className='main-color'>Photo Gallery</NavLink></li>
+              <li><NavLink to="index" className='main-color'>Home</NavLink></li>
+              <li><NavLink to="recipe" className='main-color'>Recipes</NavLink></li>
+              <li><NavLink to="photo" className='main-color'>Photo Gallery</NavLink></li>
               </menu>
           </nav>
           </header>
 
-          <main>App components go here</main>
+          <Routes>
+            <Route path='/' element={<Login />} exact />
+            <Route path='/recipe' element={<Recipe />} />
+            <Route path='/Photo' element={<Photo />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
 
           <footer>
           <hr />
@@ -32,4 +37,8 @@ export default function App() {
       </div>
     </BrowserRouter>
   );
+}
+
+function NotFound() {
+  return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
 }
