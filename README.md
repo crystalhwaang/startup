@@ -74,7 +74,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Links** - Linked my GitHub repository, as well as links that allow for navigation between web pages. Each of the three HTML pages can be called from any of the other two HTML pages at any given time.
 - [x] **Text** - Added text into all three HTML pages. Some text is used as a placeholder, while other text is used as an example of what the site may look at when in use.
 - [x] **3rd party API placeholder** - Placed the 3rd party APT placeholder on my recipes page. I listed a few ingredients that could be entered and put the placeholder directly underneath for when it is called.
-- [x] **Images** - I placed an image placeholder on the photo.html page, since that is where most images will be displayed. There is also an image placeholder on the recipe.html page, since photos will appear, along with hyperlinks, of potential recipes.
+- [x] **Images** - I placed images that are linked from online sources to my photos and recipes page. Text is attached to them.
 - [x] **Login placeholder** - The login placeholder is located on index.html. This is the page that each user will be directed to when they first enter Food Fetch. They will need to login here, in order to access the rest of the site.
 - [x] **DB data placeholder** - The DB Data Placeholder is located on the photo.html page, since it will store all of the photos. Users will also be stored from the index.html page.
 - [x] **WebSocket placeholder** - This is located on the photo.html page. As users post on here, their photos will be broadcast to all other users on the Food Fetch platform.
@@ -83,12 +83,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - I added a bit of color to the header of each of my pages. The background has been kept white for now, since the photos have so much color already. The background may be changed, but also may stay the same in the future.
+- [x] **Use of a CSS framework** - I used Bootstrap to style a lot of my pages.
+- [x] **All visual elements styled using CSS** - All visual elements are styled by CSS through either my own CSS pages, or through Boostrap implementation.
+- [x] **Responsive to window resizing using flexbox and/or grid display** - Image resizing is achieved through flexbox. Flexbox is implemented in each CSS page for each HTML page.
+- [x] **Use of a imported font** - The imported font is used under the name "My Font," and is used for the title headers (top left corner) of every page.
+- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - Element, class, and ID are used in various areas throughout all of the pages. Each is either selected from Bootstrap or from my personalized CSS pages.
 
 ## 🚀 React part 1: Routing deliverable
 
