@@ -6,6 +6,23 @@
 
 header {
   flex: 0 80px;
+  background-color: #598556;
+}
+
+h1 {
+  padding-left: 20px;
+  color: #000000;
+  padding-top: 10px;
+  font-family: myFont;
+}
+
+nav {
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+.main-color {
+  color: #000000;
 }
 
 main {
@@ -21,11 +38,12 @@ footer {
 }
 
 menu {
-  flex: 1;
-  display: flex;
-  /*  overwrite Bootstrap so the menu does not wrap */
-  flex-direction: row !important;
   list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
 .navbar-brand {
