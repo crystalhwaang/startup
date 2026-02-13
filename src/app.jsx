@@ -14,7 +14,7 @@ export default function App() {
           <h1>Food Fetch</h1>
           <nav>
               <menu>
-              <li><NavLink to="index" className='main-color'>Home</NavLink></li>
+              <li><NavLink to="" className='main-color'>Login</NavLink></li>
               <li><NavLink to="recipe" className='main-color'>Recipes</NavLink></li>
               <li><NavLink to="photo" className='main-color'>Photo Gallery</NavLink></li>
               </menu>
@@ -24,7 +24,7 @@ export default function App() {
           <Routes>
             <Route path='/' element={<Login />} exact />
             <Route path='/recipe' element={<Recipe />} />
-            <Route path='/Photo' element={<Photo />} />
+            <Route path='/photo' element={<Photo />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
 
