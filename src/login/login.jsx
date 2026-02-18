@@ -27,6 +27,10 @@ export function Login() {
                         Don’t have an account?
                         <a href="#">Sign up</a>
                         </p>
+                        // Placeholder 
+                        <div id="picture" className="picture-box">
+                          <img src="placeholder.jpg" alt="random" />
+                        </div>
                     </div>
                 </div>
             </div>
