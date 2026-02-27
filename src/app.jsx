@@ -19,7 +19,7 @@ function App() {
           <h1>Food Fetch</h1>
           <nav>
               <menu>
-              <li><NavLink to="" className='main-color'>Login</NavLink></li>
+              <li><NavLink to="/" className='main-color'>Login</NavLink></li>
               {authState === AuthState.Authenticated && (
                 <li className='main-color'>
                   <NavLink className='nav-link' to='recipe'>
@@ -53,7 +53,7 @@ function App() {
               }
               exact
             />
-            <Route path='/' element={<Login />} exact />
+            {/* <Route path='/' element={<Login />} exact /> */}
             <Route path='/recipe' element={<Recipe />} />
             <Route path='/photo' element={<Photo />} />
             <Route path='*' element={<NotFound />} />
