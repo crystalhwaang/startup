@@ -102,8 +102,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - API functionality mocked out on the recipes page, to retrieve online photos and recipes.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - API functionality mocked out on the recipes page, to retrieve online photos and recipes. Websocket functionality is mocked out on the photo gallery page to show live time notifications on posts, using setInterval. Database is mock-implemented on the photo gallery page and keeps data on the photos being posted, as well as login information on the logout page (remembers the users).
+- [x] **Hooks** - useState is being used to store logged-in usernames and status. useEffect logs users back in on the login page.
 
 ## 🚀 Service deliverable
 
