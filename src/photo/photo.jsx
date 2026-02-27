@@ -1,31 +1,21 @@
 import React from 'react';
-import './photo.css';
+import { Uploads } from './uploads';
+import { ActivityFeed } from './activityFeed';
 
-export function Photo(props) {
-  const [imageUrl, setImageUrl] = React.useState('');
-  const [dishName, setDishName] = React.useState('Loading...');
-
-  React.useEffect(() => {
-    setImageUrl(`../../public/zucchiniBoats.jpg`);
-    setDishName('Zucchini Boats');
-  }, []);
-
+export function Photo({ userName }) {
   return (
-    <main>
-      <div>
-        <div className="col">
-          <div className="card h-100 shadow-sm top-padding">
-            <img src={imageUrl} alt="Photo 1"></img>
-          </div>
-          <div className="card h-100 shadow-sm">
-            <p>{dishName}</p>
-          </div>
+    <main className="bg-secondary container-fluid p-4">
+      <h2 className="text-white text-center">Food Feed</h2>
+
+      <div className="row">
+        <div className="col-md-6">
+          <Uploads userName={userName} />
+        </div>
+
+        <div className="col-md-6">
+          <ActivityFeed userName={userName} />
         </div>
       </div>
-        <span>
-            <h3>Database Data Here</h3>
-            <h3>Websocket Data Here</h3>
-        </span>
     </main>
   );
 }
