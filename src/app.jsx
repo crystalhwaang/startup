@@ -5,8 +5,13 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Photo } from './photo/photo';
 import { Recipe } from './recipe/recipe';
 import { Login } from './login/login';
+import { AuthState } from './login/authState';
 
-export default function App() {
+function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+
   return (
     <BrowserRouter>
       <div>
@@ -15,13 +20,39 @@ export default function App() {
           <nav>
               <menu>
               <li><NavLink to="" className='main-color'>Login</NavLink></li>
-              <li><NavLink to="recipe" className='main-color'>Recipes</NavLink></li>
-              <li><NavLink to="photo" className='main-color'>Photo Gallery</NavLink></li>
+              {authState === AuthState.Authenticated && (
+                <li className='main-color'>
+                  <NavLink className='nav-link' to='recipe'>
+                    Recipes
+                  </NavLink>
+                </li>
+              )}
+              {authState === AuthState.Authenticated && (
+                <li className='main-color'>
+                  <NavLink className='nav-link' to='photo'>
+                    Photo Gallery
+                  </NavLink>
+                </li>
+              )}
               </menu>
           </nav>
           </header>
 
           <Routes>
+            <Route
+              path='/'
+              element={
+                <Login
+                  userName={userName}
+                  authState={authState}
+                  onAuthChange={(userName, authState) => {
+                    setAuthState(authState);
+                    setUserName(userName);
+                  }}
+                />
+              }
+              exact
+            />
             <Route path='/' element={<Login />} exact />
             <Route path='/recipe' element={<Recipe />} />
             <Route path='/photo' element={<Photo />} />
@@ -42,3 +73,5 @@ export default function App() {
 function NotFound() {
   return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
 }
+
+export default App;

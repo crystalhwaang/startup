@@ -10,7 +10,7 @@ export function Login() {
                 <div className="card shadow">
                     <div className="card-body p-4">
                         <h2 className="text-center mb-4">Login</h2>
-                        <form method="get" action="play.html">
+                        <form method="get" action="../recipe">
                             <div className="input-group mb-3">
                                 <span className="input-group-text">@</span>
                                 <input className="form-control" type="text" placeholder="your@email.com" />
