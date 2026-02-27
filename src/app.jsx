@@ -19,23 +19,36 @@ function App() {
           <h1>Food Fetch</h1>
           <nav>
               <menu>
-              <li><NavLink to="/" className='main-color'>Login</NavLink></li>
-              {authState === AuthState.Authenticated && (
-                <li className='main-color'>
-                  <NavLink className='nav-link' to='recipe'>
-                    Recipes
-                  </NavLink>
-                </li>
-              )}
-              {authState === AuthState.Authenticated && (
-                <li className='main-color'>
-                  <NavLink className='nav-link' to='photo'>
-                    Photo Gallery
-                  </NavLink>
-                </li>
-              )}
+                {authState !== AuthState.Authenticated && (
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      Login
+                    </NavLink>
+                  </li>
+                )}
+
+                {authState === AuthState.Authenticated && (
+                  <>
+                    <li>
+                      <NavLink className="nav-link" to="/">
+                        Login
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink className="nav-link" to="/recipe">
+                        Recipes
+                      </NavLink>
+                    </li>
+
+                    <li>
+                      <NavLink className="nav-link" to="/photo">
+                        Photo Gallery
+                      </NavLink>
+                    </li>
+                  </>
+                )}
               </menu>
-          </nav>
+            </nav>
           </header>
 
           <Routes>
