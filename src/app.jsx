@@ -6,9 +6,12 @@ import { Photo } from './photo/photo';
 import { Recipe } from './recipe/recipe';
 import { Login } from './login/login';
 import { AuthState } from './login/authState';
+import { useEffect } from 'react';
 
 function App() {
-  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const [userName, setUserName] = React.useState('');
+  useEffect(() => { const storedUser = localStorage.getItem('userName');
+    if (storedUser) {setUserName(storedUser); setAuthState(AuthState.Authenticated);}}, []);
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
 
