@@ -109,12 +109,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Used in the backend with index.js to start up the web service. Configured with vite HTTP server in vite.config.js file.
+- [x] **Static middleware for frontend** - Static middleware added to serve static files for now.
+- [x] **Calls to third party endpoints** - Used fetch to make calls to the Meal DB. Requests are triggered by React and called to receive a random recipe on the recipe page.
+- [x] **Backend service endpoints** - Endpoints implemented in index.js, including the authentication and photo endpoints. Handles cookies and creating/finding users.
+- [x] **Frontend calls service endpoints** - Service endpoints implemented to save and retrieve scores and to register and login users. 
+- [x] **Supports registration, login, logout, and restricted endpoint** - Register and login requests are handled in unauthenticated.jsx. Logout requests are handled in unauthenticated.jsx. Restricted endpoint is handled through a simple express middleware technique in index.js.
 
 ## 🚀 DB deliverable
 
