@@ -7,9 +7,28 @@ export function Recipe(props) {
   const [dishLink, setDishLink] = React.useState('Loading...');
 
   React.useEffect(() => {
-    setImageUrl(`https://www.tasteofhome.com/wp-content/uploads/2025/07/Best-Lasagna_EXPS_ATBBZ25_36333_DR_07_01_2b.jpg`);
-    setDishName('Lasagna');
-    setDishLink('https://www.tasteofhome.com/recipes/best-lasagna/');
+    // Fetch a random recipe from TheMealDB
+    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+      .then((response) => response.json())
+      .then((data) => {
+        const meal = data?.meals?.[0];
+        if (!meal) {
+          return;
+        }
+
+        setImageUrl(meal.strMealThumb);
+        setDishName(meal.strMeal);
+
+        const sourceLink =
+          meal.strSource ||
+          meal.strYoutube ||
+          `https://www.themealdb.com/meal/${meal.idMeal}`;
+        setDishLink(sourceLink);
+      })
+      .catch((error) => {
+        console.error('Error fetching random recipe', error);
+        setDishName('Unable to load recipe');
+      });
   }, []);
 
   return (
