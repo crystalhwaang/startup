@@ -10,11 +10,6 @@ export function Uploads({ userName }) {
 
     if (!foodName) return;
 
-    localStorage.setItem(
-      'lastUpload',
-      JSON.stringify({ foodName })
-    );
-
     await savePhotoUpload(userName, foodName, image);
 
     setFoodName('');
