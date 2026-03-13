@@ -5,6 +5,22 @@ export function ActivityFeed() {
   const [events, setEvents] = React.useState([]);
 
   React.useEffect(() => {
+    async function loadPhotos() {
+      try {
+        const response = await fetch('/api/photos');
+        if (response.ok) {
+          const photos = await response.json();
+          setEvents(photos);
+        }
+      } catch (error) {
+        console.error('Error loading photos', error);
+      }
+    }
+
+    loadPhotos();
+  }, []);
+
+  React.useEffect(() => {
     function handlePostEvent(event) {
         setEvents(prevEvents => {
         let newEvents = [event, ...prevEvents];

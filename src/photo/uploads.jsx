@@ -5,7 +5,7 @@ export function Uploads({ userName }) {
   const [foodName, setFoodName] = React.useState('');
   const [image, setImage] = React.useState(null);
 
-  function handleUpload(e) {
+  async function handleUpload(e) {
     e.preventDefault();
 
     if (!foodName) return;
@@ -15,16 +15,10 @@ export function Uploads({ userName }) {
       JSON.stringify({ foodName })
     );
 
-    PostNotifier.broadcastEvent(
-      userName,
-      PostEvent.Upload,
-      {
-        food: foodName,
-        date: new Date().toLocaleTimeString(),
-      }
-    );
+    await savePhotoUpload(userName, foodName, image);
 
     setFoodName('');
+    setImage(null);
   }
 
   return (
@@ -51,4 +45,24 @@ export function Uploads({ userName }) {
       </form>
     </div>
   );
+}
+
+async function savePhotoUpload(userName, foodName, image) {
+  const date = new Date().toLocaleString();
+
+  const newPhoto = {
+    userName,
+    food: foodName,
+    date,
+    imageName: image ? image.name : undefined,
+  };
+
+  await fetch('/api/photo', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(newPhoto),
+  });
+
+  // Let other users know a new photo was uploaded
+  PostNotifier.broadcastEvent(userName, PostEvent.Upload, newPhoto);
 }
