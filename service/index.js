@@ -6,7 +6,8 @@ const uuid = require('uuid');
 const authCookieName = "token";
 const app = express();
 
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+// Use port 4000 for the backend service (or a CLI override)
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
@@ -14,6 +15,9 @@ app.listen(port, () => {
 
 app.use(express.json());
 app.use(cookieParser());
+
+// Serve static files from the public directory when deployed
+app.use(express.static('public'));
 
 let users = [];
 let photos = [];

@@ -10,7 +10,6 @@ export function Authenticated(props) {
     method: 'delete',
   })
     .catch(() => {
-      // Logout failed. Assuming offline
     })
     .finally(() => {
       localStorage.removeItem('userName');
