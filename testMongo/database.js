@@ -9,7 +9,7 @@ const collection = db.collection('house');
 
 async function main() {
   try {
-    // add all the following database code here
+    // add all the following database code here 
     
   } finally {
     client.close();
