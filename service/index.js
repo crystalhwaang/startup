@@ -5,6 +5,7 @@ const uuid = require('uuid');
 
 const authCookieName = "token";
 const app = express();
+const DB = require('./database.js');
 
 // Use port 4000 for the backend service (or a CLI override)
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -19,8 +20,8 @@ app.use(cookieParser());
 // Serve static files from the public directory when deployed
 app.use(express.static('public'));
 
-let users = [];
-let photos = [];
+// let users = [];
+// let photos = [];
 
 let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
@@ -109,7 +110,7 @@ async function createUser(email, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
 
   return user;
 }
