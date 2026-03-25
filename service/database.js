@@ -5,7 +5,7 @@ try {
   config = require('./dbConfig.json');
 } catch {
   console.error(
-    'Missing service/dbConfig.json — copy dbConfig.example.json and add your MongoDB credentials.'
+    'Missing service/dbConfig.json — copy service/dbConfig.example.json to service/dbConfig.json and add your MongoDB credentials.'
   );
   process.exit(1);
 }
