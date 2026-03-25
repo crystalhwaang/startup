@@ -9,18 +9,18 @@ export function Unauthenticated(props) {
   const [displayError, setDisplayError] = React.useState(null);
 
   async function loginUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
+    await loginOrCreate('/api/auth/login');
   }
 
   async function createUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
+    await loginOrCreate('/api/auth/create');
   }
 
   async function loginOrCreate(endpoint) {
+    setDisplayError(null);
   const response = await fetch(endpoint, {
     method: 'post',
+    credentials: 'include',
     body: JSON.stringify({ email: userName, password: password }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -31,7 +31,7 @@ export function Unauthenticated(props) {
     props.onLogin(userName);
   } else {
     const body = await response.json();
-    setDisplayError(`⚠ Error: ${body.msg}`);
+    setDisplayError(`⚠ Error: ${body.msg || response.statusText}`);
   }
 }
 
