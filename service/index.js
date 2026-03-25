@@ -10,10 +10,6 @@ const DB = require('./database.js');
 // Use port 4000 for the backend service (or a CLI override)
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
-
 app.use(express.json());
 app.use(cookieParser());
 
@@ -102,14 +98,18 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// updatePhotos considers a new photo in the feed
-// function updatePhotos(newPhoto) {
-//   photos.unshift(newPhoto);
-//   if (photos.length > 20) {
-//     photos.length = 20;
-//   }
-//   return photos;
-// }
+(async function start() {
+  try {
+    await DB.connect();
+  } catch (err) {
+    console.error('Failed to connect to MongoDB', err);
+    process.exit(1);
+  }
+
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+})();
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);

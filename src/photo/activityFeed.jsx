@@ -45,7 +45,7 @@ export function ActivityFeed() {
       <h4>Recent Uploads</h4>
 
       {events.map((e, index) => (
-        <div key={index}>
+        <div key={e._id != null ? String(e._id) : index}>
           - {e.userName} uploaded {e.food} at {e.date}
         </div>
       ))}
