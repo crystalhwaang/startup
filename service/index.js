@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
+const { WebSocketServer } = require('ws');
 
 const authCookieName = "token";
 const app = express();
@@ -106,9 +107,12 @@ app.use((_req, res) => {
     process.exit(1);
   }
 
-  app.listen(port, () => {
+  const server = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
+
+  const wss = new WebSocketServer({ server });
+  wss.on('connection', () => {});
 })();
 
 async function createUser(email, password) {
@@ -138,7 +142,6 @@ async function findUser(field, value) {
   return null;
 }
 
-// setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     secure: true,
