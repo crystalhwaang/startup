@@ -1,5 +1,10 @@
 class PostNotifierClass {
   handlers = [];
+  socket = null;
+
+  constructor() {
+    this.connect();
+  }
 
   addHandler(handler) {
     this.handlers.push(handler);
@@ -10,9 +15,36 @@ class PostNotifierClass {
   }
 
   broadcastEvent(userName, eventType, data) {
+    const event = { userName, eventType, ...data };
+
     this.handlers.forEach(handler =>
-      handler({ userName, eventType, ...data })
+      handler(event)
     );
+
+    if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+      this.socket.send(JSON.stringify(event));
+    }
+  }
+
+  connect() {
+    const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const host = window.location.host;
+    this.socket = new WebSocket(`${protocol}://${host}/ws`);
+
+    this.socket.onmessage = (msg) => {
+      try {
+        const event = JSON.parse(msg.data);
+        this.handlers.forEach(handler => handler(event));
+      } catch {}
+    };
+
+    this.socket.onclose = () => {
+      setTimeout(() => this.connect(), 1000);
+    };
+
+    this.socket.onerror = () => {
+      this.socket.close();
+    };
   }
 }
 
@@ -21,12 +53,3 @@ export const PostNotifier = new PostNotifierClass();
 export const PostEvent = {
   Upload: 'upload'
 };
-
-setInterval(() => {
-  const foods = ['Pizza', 'Ramen', 'Burger', 'Tacos'];
-  const randomFood = foods[Math.floor(Math.random() * foods.length)];
-  const userName = 'Simon';
-  const date = new Date().toLocaleDateString();
-
-  PostNotifier.broadcastEvent(userName, PostEvent.Upload, {food: randomFood, date: date});
-}, 5000);
