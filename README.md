@@ -120,8 +120,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - All photos are stored in MongoDB. Backend was updated from a static database to MongoDB, which will continue to collect and hold the photos and data uploaded.
+- [x] **Stores credentials in MongoDB** - All users are stored in MongoDB. Credentials can be retrieved from the database and can recall previous users. Users must use previous set passwords to enter into their accounts.
 
 ## 🚀 WebSocket deliverable
 
