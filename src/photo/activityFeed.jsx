@@ -3,6 +3,7 @@ import { PostNotifier } from './postNotifier';
 
 export function ActivityFeed() {
   const [events, setEvents] = React.useState([]);
+  const [socketConnected, setSocketConnected] = React.useState(false);
 
   React.useEffect(() => {
     async function loadPhotos() {
@@ -34,15 +35,20 @@ export function ActivityFeed() {
     }
 
     PostNotifier.addHandler(handlePostEvent);
+    PostNotifier.addStatusHandler(setSocketConnected);
 
     return () => {
         PostNotifier.removeHandler(handlePostEvent);
+        PostNotifier.removeStatusHandler(setSocketConnected);
     };
     }, []);
 
   return (
     <div className="card p-3">
       <h4>Recent Uploads</h4>
+      <div className={`mb-2 ${socketConnected ? 'text-success' : 'text-warning'}`}>
+        Live updates: {socketConnected ? 'Connected' : 'Reconnecting...'}
+      </div>
 
       {events.map((e, index) => (
         <div key={e._id != null ? String(e._id) : index}>

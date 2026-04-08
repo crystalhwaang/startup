@@ -1,6 +1,8 @@
 class PostNotifierClass {
   handlers = [];
+  statusHandlers = [];
   socket = null;
+  isConnected = false;
 
   addHandler(handler) {
     this.handlers.push(handler);
@@ -9,6 +11,16 @@ class PostNotifierClass {
 
   removeHandler(handler) {
     this.handlers = this.handlers.filter(h => h !== handler);
+  }
+
+  addStatusHandler(handler) {
+    this.statusHandlers.push(handler);
+    handler(this.isConnected);
+    this.ensureConnected();
+  }
+
+  removeStatusHandler(handler) {
+    this.statusHandlers = this.statusHandlers.filter((h) => h !== handler);
   }
 
   broadcastEvent(userName, eventType, data) {
@@ -37,6 +49,11 @@ class PostNotifierClass {
     const host = window.location.host;
     this.socket = new WebSocket(`${protocol}://${host}/ws`);
 
+    this.socket.onopen = () => {
+      this.isConnected = true;
+      this.statusHandlers.forEach((handler) => handler(true));
+    };
+
     this.socket.onmessage = (msg) => {
       try {
         const event = JSON.parse(msg.data);
@@ -47,6 +64,8 @@ class PostNotifierClass {
 
     this.socket.onclose = () => {
       this.socket = null;
+      this.isConnected = false;
+      this.statusHandlers.forEach((handler) => handler(false));
       if (this.handlers.length > 0) {
         setTimeout(() => this.ensureConnected(), 1000);
       }
