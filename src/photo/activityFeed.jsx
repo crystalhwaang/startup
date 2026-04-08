@@ -7,7 +7,7 @@ export function ActivityFeed() {
   React.useEffect(() => {
     async function loadPhotos() {
       try {
-        const response = await fetch('/api/photos');
+        const response = await fetch('/api/photos', { credentials: 'include' });
         if (response.ok) {
           const photos = await response.json();
           setEvents(photos);

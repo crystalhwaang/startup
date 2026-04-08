@@ -1,7 +1,7 @@
 import React from 'react';
 import { PostNotifier, PostEvent } from './postNotifier';
 
-export function Uploads({ userName }) {
+export function Uploads({ userName, onUploadSuccess }) {
   const [foodName, setFoodName] = React.useState('');
   const [image, setImage] = React.useState(null);
 
@@ -10,7 +10,7 @@ export function Uploads({ userName }) {
 
     if (!foodName) return;
 
-    await savePhotoUpload(userName, foodName, image);
+    await savePhotoUpload(userName, foodName, image, onUploadSuccess);
 
     setFoodName('');
     setImage(null);
@@ -42,7 +42,7 @@ export function Uploads({ userName }) {
   );
 }
 
-async function savePhotoUpload(userName, foodName, image) {
+async function savePhotoUpload(userName, foodName, image, onUploadSuccess) {
   const date = new Date().toLocaleString();
 
   const newPhoto = {
@@ -52,12 +52,19 @@ async function savePhotoUpload(userName, foodName, image) {
     imageName: image ? image.name : undefined,
   };
 
-  await fetch('/api/photo', {
+  const response = await fetch('/api/photo', {
     method: 'POST',
+    credentials: 'include',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(newPhoto),
   });
 
-  // Let other users know a new photo was uploaded
+  if (!response.ok) {
+    return;
+  }
+
+  onUploadSuccess?.();
+
+  // Let other clients know a new photo was uploaded
   PostNotifier.broadcastEvent(userName, PostEvent.Upload, newPhoto);
 }

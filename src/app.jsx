@@ -71,7 +71,7 @@ function App() {
             />
             {/* <Route path='/' element={<Login />} exact /> */}
             <Route path='/recipe' element={<Recipe />} />
-            <Route path='/photo' element={<Photo />} />
+            <Route path='/photo' element={<Photo userName={userName} />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
 
