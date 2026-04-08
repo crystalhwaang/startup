@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
-const { WebSocketServer } = require('ws');
+const { WebSocketServer, WebSocket } = require('ws');
 
 const authCookieName = "token";
 const app = express();
@@ -111,8 +111,24 @@ app.use((_req, res) => {
     console.log(`Listening on port ${port}`);
   });
 
-  const wss = new WebSocketServer({ server });
-  wss.on('connection', () => {});
+  const wss = new WebSocketServer({ server, path: '/ws' });
+
+  wss.on('connection', (socket) => {
+    socket.on('message', (data, isBinary) => {
+      const text = isBinary ? data : data.toString();
+      try {
+        JSON.parse(text);
+      } catch {
+        return;
+      }
+
+      wss.clients.forEach((client) => {
+        if (client !== socket && client.readyState === WebSocket.OPEN) {
+          client.send(text);
+        }
+      });
+    });
+  });
 })();
 
 async function createUser(email, password) {

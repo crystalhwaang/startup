@@ -2,12 +2,9 @@ class PostNotifierClass {
   handlers = [];
   socket = null;
 
-  constructor() {
-    this.connect();
-  }
-
   addHandler(handler) {
     this.handlers.push(handler);
+    this.ensureConnected();
   }
 
   removeHandler(handler) {
@@ -16,14 +13,23 @@ class PostNotifierClass {
 
   broadcastEvent(userName, eventType, data) {
     const event = { userName, eventType, ...data };
-
     this.handlers.forEach(handler =>
       handler(event)
     );
 
+    this.ensureConnected();
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
       this.socket.send(JSON.stringify(event));
     }
+  }
+
+  /** Avoid opening /ws on every page (e.g. login); only connect when the photo feed is in use. */
+  ensureConnected() {
+    if (typeof window === 'undefined') return;
+    if (this.socket && (this.socket.readyState === WebSocket.OPEN || this.socket.readyState === WebSocket.CONNECTING)) {
+      return;
+    }
+    this.connect();
   }
 
   connect() {
@@ -35,15 +41,19 @@ class PostNotifierClass {
       try {
         const event = JSON.parse(msg.data);
         this.handlers.forEach(handler => handler(event));
-      } catch {}
+      } catch {
+      }
     };
 
     this.socket.onclose = () => {
-      setTimeout(() => this.connect(), 1000);
+      this.socket = null;
+      if (this.handlers.length > 0) {
+        setTimeout(() => this.ensureConnected(), 1000);
+      }
     };
 
     this.socket.onerror = () => {
-      this.socket.close();
+      this.socket?.close();
     };
   }
 }
