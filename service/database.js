@@ -36,7 +36,6 @@ async function addUser(user) {
   return userCollection.insertOne(user);
 }
 
-/** Persists login token or clears it on logout (must not $set entire doc — avoids _id issues). */
 async function updateUser(user) {
   const updates = {};
   const set = {};
